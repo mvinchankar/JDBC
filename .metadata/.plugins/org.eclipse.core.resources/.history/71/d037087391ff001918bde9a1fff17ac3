@@ -1,0 +1,28 @@
+package com.bridgelabz.sample;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class DemoClass {
+	
+	public static void main(String[] args)  throws Exception
+    {
+		String url = "jdbc:mysql://localhost:3306/demo";
+		String username = "root";
+		String password = "";
+		String query = "select Student_name from Student where idStudent = 2";  
+		Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url,username,password);
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(query);
+       
+        String name = rs.getString("Student_name");
+        System.out.println(rs.toString());
+        st.close();
+        con.close();
+    }
+
+}

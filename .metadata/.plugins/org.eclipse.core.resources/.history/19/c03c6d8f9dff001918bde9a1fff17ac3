@@ -1,0 +1,27 @@
+package com.bridgelabz.crudpreparedstatement;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class DeleteInTable {
+	
+	public  void deleteTheTable(String tableName, Connection connection){
+		String query="delete from Student where id_student=105";
+		try {
+			PreparedStatement stmt=connection.prepareStatement("delete from Student where id_student=?");  
+			stmt.setInt(1,101);  
+			  
+			int i=stmt.executeUpdate();  
+			System.out.println(i+" records deleted");  
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+
+		}
+
+
+	}
+
+}
